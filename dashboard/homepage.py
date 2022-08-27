@@ -17,3 +17,6 @@ if selection=="User Overview Analysis":
     user_overview_page.overview_app()
 else:
     modelpredict.prdict_app()
+
+
+st.button("Detailed Telecom-Data-Analysis Figure")
