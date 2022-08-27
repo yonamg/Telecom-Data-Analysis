@@ -5,17 +5,20 @@ import sys
 
 
 def image_grid():
-    st.title('Multiple Telecom-Data-Analysis Images')
-    image_dir = sys.path.append(os.path.abspath(os.path.join('../grid_image/')))
-    #os.path.abspath(os.path.dirname('../grid_image/'))
- 
+    PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
+    print(PROJECT_PATH)
+    image_dir = os.path.join(PROJECT_PATH,'grid_image')
     print(image_dir)
 
     fName_list = os.listdir(image_dir)
+
     print(len(os.listdir(image_dir)))
     img_file_num = len(os.listdir(image_dir))
-    
+
+
     idx = 0
+    
+
     for _ in range(len(fName_list)-1):
         cols = st.columns(4)
         if idx < len(fName_list):
