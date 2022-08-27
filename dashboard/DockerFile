@@ -1,0 +1,26 @@
+
+#define the base image
+FROM python:3.9
+
+
+ENV PYTHONCODE=1
+# creating a working directory
+WORKDIR /app
+
+# copy all the requieremnts into the new directory created
+COPY requirements.txt ./requirements.txt
+#install all that is in the requirements.txt
+
+RUN pip install -r requirements.txt
+
+#expose the port to be used to run the application
+EXPOSE 8501
+
+COPY . /app
+
+RUN adduser -u 2323 --disabled-password --gecos "" appuser && chown -R appuser /app
+USER appuser
+
+ENTRYPOINT [ "streamlit", "run" ]
+CMD ["app.py"]
+
