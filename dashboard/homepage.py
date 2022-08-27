@@ -1,9 +1,19 @@
 import streamlit as st
 import streamlit.components.v1 as comp
 from PIL import Image
+import user_overview_page
+import user_engagement_page
+import user_experience_page
+import user_satisifaction_page 
+import streamlit as st
 
-def homepage_app():
-    st.title("Home Page")
-    image = Image.open('./images/telecom.jpg')
-    st.image(image, caption="Telecom Data Analysis", use_column_width=True )
-    st.write("detail analysis of user overview analysis, user engagement, experience and satisfaction of Telecom data")
+PAGES = {
+    "Data Overview": user_overview_page,
+    "User Engagement Analysis":  user_engagement_page,
+    "User Experience Analytics": user_experience_page,
+    "User Satisfaction Analysis": user_satisifaction_page
+}
+
+selection = st.sidebar.radio("Go to page", list(PAGES.keys()))
+page = PAGES[selection]
+page.app()
