@@ -6,12 +6,14 @@ import modelpredict
 
 st.title("Telecommunication Data Analysis")
 pages = {
-    "User Overview Analysis": user_overview_page,
-    "Model Prediction" : modelpredict
+    "User Overview Analysis": user_overview_page.overview_app,
+    "Model Prediction" : modelpredict.prdict_app
 }
 
 image = Image.open('../images/telecom.jpg')
 st.image(image, caption="Telecom Data Analysis", use_column_width=True)
-selection = st.sidebar.radio("Go to page ", list(pages.keys()))
-page = pages[selection]
-page.app()
+selection = st.sidebar.selectbox("Go to page ", list(pages.keys()))
+if selection=="User Overview Analysis":
+    user_overview_page.overview_app()
+else:
+    modelpredict.prdict_app()
